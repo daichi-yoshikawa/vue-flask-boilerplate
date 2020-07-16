@@ -1,0 +1,12 @@
+version: '3'
+services:
+  webapp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "flask-server"
+    volumes:
+      - .:/root
+    #ports:
+    #  - "5000:5000"
+    network_mode: "host"

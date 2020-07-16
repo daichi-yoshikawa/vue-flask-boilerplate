@@ -1,0 +1,31 @@
+:root {
+    --main-font: 'Open Sans', sans-serif;
+    --email-font: 'Ubuntu Mono', monospace;
+    --notation-font: var(--main-font);
+
+    --main-light-color: rgb(220, 220, 220);
+    --main-dark-color: rgb(55, 55, 55);
+    --accent-light-color: rgb(220, 220, 220);
+    --accent-dark-color: rgb(55, 55, 55);
+    --notation-light-color: rgb(200, 100, 0);
+    --notation-dark-color: rgb(200, 100, 0);
+    --warning-light-color: rgb(240, 160, 0);
+    --warning-dark-color: rgb(240, 160, 0);
+    --error-light-color: rgb(255, 0, 0);
+    --error-dark-color: rgb(255, 0, 0);
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+a {
+    color: var(--main-dark-color);
+    outline: 0;
+}
+
+a:hover {
+    color: var(--main-dark-color);
+    text-decoration: none;
+}
