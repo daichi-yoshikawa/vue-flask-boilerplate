@@ -1,8 +1,7 @@
 from flask import render_template
-
-from app import app
+from . import app_blueprint as app
 
 
 @app.route('/', methods=['GET'])
-def base():
+def index():
   return render_template('index.html')

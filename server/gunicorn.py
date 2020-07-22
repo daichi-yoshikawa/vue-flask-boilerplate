@@ -19,7 +19,7 @@ class Config:
     self.proc_name = str(self.getenv('GUNICORN_PROC_NAME', 'gunicorn'))
     self.workers = int(os.getenv('GUNICORN_WORKERS', 1))
     self.bind = self.host + ':' + str(self.port)
-    self.app = str(self.getenv('GUNICORN_APP', 'app:create_app()'))
+    self.app = str(self.getenv('GUNICORN_APP', 'flask_app:create_app()'))
 
   def getenv(self, envname, default_val):
     val = os.getenv(envname)
