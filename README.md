@@ -43,6 +43,8 @@ $ python gunicorn.py
 
 Now you can check if everything is going well by opening browser and input "localhost:5000" in URL bar. You'll see like below.<br>
 
+![Image of sample page](https://raw.githubusercontent.com/daichi-yoshikawa/personal-assets/master/vue-flask-boilerplate/sample_page_screenshot.png)
+
 Also, try "localhost:5000/api/sample" then you'll get JSON format response {"Hello": "RESTful API world"}.
 
 ## How to extend code
