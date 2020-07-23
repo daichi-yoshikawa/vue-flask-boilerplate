@@ -9,6 +9,8 @@ class Config:
 
 
 class DevelopmentConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, '../data.sqlite')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = True
     SECRET_KEY = os.environ.get('development_config_secret_key')
 
