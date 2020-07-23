@@ -45,7 +45,11 @@ Now you can check if everything is going well by opening browser and input "loca
 
 ![Image of sample page](https://raw.githubusercontent.com/daichi-yoshikawa/personal-assets/master/vue-flask-boilerplate/sample_page_screenshot.png)
 
-Also, try "localhost:5000/api/sample" then you'll get JSON format response {"Hello": "RESTful API world"}.
+Also, uncomment the lines in server/flask_app.py to activate api, try "localhost:5000/api/sample" then you'll get JSON format response {"Hello": "RESTful API world"}.
+```
+from api import api_blueprint
+flask_app.register_blueprint(api_blueprint, url_prefix='/api')
+```
 
 ## How to extend code
 ### Backend (Flask)
