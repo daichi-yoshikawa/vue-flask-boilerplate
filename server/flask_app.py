@@ -39,9 +39,14 @@ def create_app():
     for db in models.dbs:
       db.create_all()
 
-  from app import app_blueprint
-  flask_app.register_blueprint(app_blueprint, url_prefix='/')
-  from api import api_blueprint
-  flask_app.register_blueprint(api_blueprint, url_prefix='/api')
+  from main import main_blueprint
+  flask_app.register_blueprint(main_blueprint, url_prefix='/')
+  """If you create SaaS activate the follows."""
+  #from auth import auth_blueprint
+  #flask_app.register_blueprint(auth_blueprint, url_prefix='/auth')
+  #from app import app_blueprint
+  #flask_app.register_blueprint(app_blueprint, url_prefix='/app')
+  #from api import api_blueprint
+  #flask_app.register_blueprint(api_blueprint, url_prefix='/api')
 
   return flask_app

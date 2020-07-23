@@ -3,5 +3,5 @@ from . import app_blueprint as app
 
 
 @app.route('/', methods=['GET'])
-def index():
-  return render_template('index.html')
+def app_index():
+  return {'If user login,': 'this page may be index.'}
