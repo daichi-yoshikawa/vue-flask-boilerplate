@@ -41,14 +41,69 @@ And run python file under server dir.
 $ python gunicorn.py
 ```
 
-Now you can check if everything is going well by opening browser and input "localhost:5000" in URL bar. You'll see like below.
+Now you can check if everything is going well by opening browser and input "localhost:5000" in URL bar. You'll see like below.<br>
+
+Also, try "localhost:5000/api/sample" then you'll get JSON format response {"Hello": "RESTful API world"}.
 
 ## How to extend code
 ### Backend (Flask)
 #### Add more routes
-#### Add more APIs
+Regarding routes, especially for GET method, implement in server/app/views.py.
+
+#### Add more RESTful APIs
+To implement RESTful APIs, create new python file to implement API in server/api. And then implement API with Resource class provided by flask-RESTful package as sample.py is implemented. Once you implemented API, edit server/api/__init__.py like below.
+```
+from flask import Blueprint
+from flask_restful improt Api
+
+api_blueprint = Blueprint('api', __name__)
+api = Api(api_blueprint)
+
+from .your_api import YourAPI
+
+api.add_resource(YourAPI, '/your_api')
+```
+
 #### Add more DB tables
+server/models directory is the place to add more DB tables. You create python file to implement DB table with SQLAlchemy. Here is an example of implementation.
+```
+from datetime import datetime
+
+from .db import db
+
+
+class User(db.Model):
+  name = 'users'
+  __tablename__ = 'users'
+  id = db.Column(db.Integer(), primary_key=True)
+  name = db.Column(db.String(255), nullable=False, unique=True)
+  created_at = db.Column(db.DateTime(), default=datetime.utcnow)
+  updated_at = db.Column(db.DateTime(), default=datetime.utcnow)
+```
+
+And then, add new module you created to server/models/__init__.py like below.
+```
+from .db import db
+from .user import User # Add this line.
+```
+
 #### Add more DBs
+If you'd like to create multiple databases for some reason, you create new db python file under server/models, server/models/db_ext.py, for example. And implement as below.
+```
+from flask_sqlalchemy import SQLAlchemy
+
+
+db_ext = SQLAlchemy()
+```
+And implement DB tables like "Add more DB tables", but use db instead of db_ext.<br>
+
+At last, add db_ext to server/models/__init__.py to import in it.
+```
+from .db import db
+from .db_ext import db_ext # Add db_ext here.
+...
+dbs = [db, db_ext] # Add db_ext here too.
+```
 
 ### Frontend (Vue.js)
 #### Add more 3rd party js files
