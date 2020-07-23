@@ -51,7 +51,7 @@ Also, try "localhost:5000/api/sample" then you'll get JSON format response {"Hel
 Regarding routes, especially for GET method, implement in server/app/views.py.
 
 #### Add more RESTful APIs
-To implement RESTful APIs, create new python file to implement API in server/api. And then implement API with Resource class provided by flask-RESTful package as sample.py is implemented. Once you implemented API, edit server/api/__init__.py like below.
+To implement RESTful APIs, create new python file to implement API in server/api. And then implement API with Resource class provided by flask-RESTful package as sample.py is implemented. Once you implemented API, edit server/api/\_\_init\_\_.py like below.
 ```
 from flask import Blueprint
 from flask_restful improt Api
@@ -81,7 +81,7 @@ class User(db.Model):
   updated_at = db.Column(db.DateTime(), default=datetime.utcnow)
 ```
 
-And then, add new module you created to server/models/__init__.py like below.
+And then, add new module you created to server/models/\_\_init\_\_.py like below.
 ```
 from .db import db
 from .user import User # Add this line.
@@ -97,7 +97,7 @@ db_ext = SQLAlchemy()
 ```
 And implement DB tables like "Add more DB tables", but use db instead of db_ext.<br>
 
-At last, add db_ext to server/models/__init__.py to import in it.
+At last, add db_ext to server/models/\_\_init\_\_.py to import in it.
 ```
 from .db import db
 from .db_ext import db_ext # Add db_ext here.
