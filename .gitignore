@@ -1,3 +1,5 @@
+*.sqlite
+
 dist/
 node_modules/
 
