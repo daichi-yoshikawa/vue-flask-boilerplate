@@ -22,18 +22,18 @@ def get_flask_path(env):
   }
 
 
-env = os.getenv('FLASK_ENV') or 'development'
-flask_path = get_flask_path(env)
-flask_app = Flask(
-  __name__, root_path=flask_path['root_path'],
-  template_folder=flask_path['template_folder'],
-  static_folder=flask_path['static_folder'])
-
-flask_app.config.from_object(config[env])
-config[env].init_app(flask_app)
-
-
 def create_app():
+  env = os.getenv('FLASK_ENV') or 'development'
+
+  flask_path = get_flask_path(env)
+  flask_app = Flask(
+    __name__, root_path=flask_path['root_path'],
+    template_folder=flask_path['template_folder'],
+    static_folder=flask_path['static_folder'])
+
+  flask_app.config.from_object(config[env])
+  config[env].init_app(flask_app)
+
   [db.init_app(flask_app) for db in models.dbs]
   with flask_app.app_context():
     for db in models.dbs:
