@@ -1,6 +1,45 @@
 # Template for Vue-Flask CRUD Web application
-
 This is a template to build web application with Vue.js for Frontend, Python Flask for backend, and Gunicorn as WSGI.
+
+## What is good about this template?
+### Flask part
+As a whole, you can avoid thousands of lines in any files with reasonable directory structures,<br>
+even if you try to increase the number of behaviours against GET, POST, PUT, and DELETE request<br>
+and database tables, etc. For more details, it does the follow.
+* Uses blueprint to manage auth, app, api and others separately for larger application by default
+* Database tables can be increased in a scalable way, but can be used across blueprints
+root
+   ├──server
+   │    ├──flask_app.py    <- Create Flask instance and provide create_app() func used by gunicorn
+   │    ├──gunicorn.py   <- Call gunicorn from python, after loading env vars
+   │    ├──config.py   <- Config used when creating Flask
+   │    ├──requirements.txt   <- pip freeze results at initial state
+   │    ├──main   <- Implement main contents, starting from route('/')
+   │    │    ├──__init__.py   
+   │    │    ├──views.py    <- You can split this file for large scala application   
+   │    │    ├──...   
+   │    │ 
+   │    ├──app    <- Majorly implement anything starting from route('/app')
+   │    │    ├──__init__.py
+   │    │    ├──views.py
+   │    │    ├──...
+   │    │
+   │    ├──api
+   │    │    ├──__init__.py
+   │    │    ├──sample.py
+   │    │    ├──...
+   │    │
+   │    ├──auth
+   │    │    ├──__init__.py 
+   │    │    ├──views.py
+   │    │    ├──...
+   │    │   
+   │    └── models
+   │         ├──__init__.py 
+   │         ├──db.py
+   │         ├──user.py
+   │         ├──...
+   ├──...
 
 ## Requisites
 In order to use this template, you'll need to have the follows.
