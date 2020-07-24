@@ -60,7 +60,7 @@ Regarding routes, especially for GET method, implement in server/app/views.py.
 To implement RESTful APIs, create new python file to implement API in server/api. And then implement API with Resource class provided by flask-RESTful package as sample.py is implemented. Once you implemented API, edit server/api/\_\_init\_\_.py like below.
 ```
 from flask import Blueprint
-from flask_restful improt Api
+from flask_restful import Api
 
 api_blueprint = Blueprint('api', __name__)
 api = Api(api_blueprint)
