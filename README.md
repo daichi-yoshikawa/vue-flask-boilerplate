@@ -8,38 +8,38 @@ even if you try to increase the number of behaviours against GET, POST, PUT, and
 and database tables, etc. For more details, it does the follow.
 * Uses blueprint to manage auth, app, api and others separately for larger application by default
 * Database tables can be increased in a scalable way, but can be used across blueprints
-root
-   ├──server
-   │    ├──flask_app.py    <- Create Flask instance and provide create_app() func used by gunicorn
-   │    ├──gunicorn.py   <- Call gunicorn from python, after loading env vars
-   │    ├──config.py   <- Config used when creating Flask
-   │    ├──requirements.txt   <- pip freeze results at initial state
-   │    ├──main   <- Implement main contents, starting from route('/')
-   │    │    ├──__init__.py   
-   │    │    ├──views.py    <- You can split this file for large scala application   
-   │    │    ├──...   
-   │    │ 
-   │    ├──app    <- Majorly implement anything starting from route('/app')
-   │    │    ├──__init__.py
-   │    │    ├──views.py
-   │    │    ├──...
-   │    │
-   │    ├──api
-   │    │    ├──__init__.py
-   │    │    ├──sample.py
-   │    │    ├──...
-   │    │
-   │    ├──auth
-   │    │    ├──__init__.py 
-   │    │    ├──views.py
-   │    │    ├──...
-   │    │   
-   │    └── models
-   │         ├──__init__.py 
-   │         ├──db.py
-   │         ├──user.py
-   │         ├──...
-   ├──...
+root<br>
+   ├──server<br>
+   │    ├──flask_app.py    <- Create Flask instance and provide create_app() func used by gunicorn<br>
+   │    ├──gunicorn.py   <- Call gunicorn from python, after loading env vars<br>
+   │    ├──config.py   <- Config used when creating Flask<br>
+   │    ├──requirements.txt   <- pip freeze results at initial state<br>
+   │    ├──main   <- Implement main contents, starting from route('/')<br>
+   │    │    ├──__init__.py<br>
+   │    │    ├──views.py    <- You can split this file for large scala application<br>
+   │    │    ├──...<br>
+   │    │<br>
+   │    ├──app    <- Majorly implement anything starting from route('/app')<br>
+   │    │    ├──__init__.py<br>
+   │    │    ├──views.py<br>
+   │    │    ├──...<br>
+   │    │<br>
+   │    ├──api<br>
+   │    │    ├──__init__.py<br>
+   │    │    ├──sample.py<br>
+   │    │    ├──...<br>
+   │    │<br>
+   │    ├──auth<br>
+   │    │    ├──__init__.py<br> 
+   │    │    ├──views.py<br>
+   │    │    ├──...<br>
+   │    │<br>
+   │    └── models<br>
+   │         ├──__init__.py<br> 
+   │         ├──db.py<br>
+   │         ├──user.py<br>
+   │         ├──...<br>
+   ├──...<br>
 
 ## Requisites
 In order to use this template, you'll need to have the follows.
