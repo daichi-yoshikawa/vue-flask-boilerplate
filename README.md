@@ -128,26 +128,16 @@ class User(db.Model):
 
 And then, add new module you created to server/models/\_\_init\_\_.py like below.
 ```
-from .db import db
 from .user import User # Add this line.
 ```
 
-#### Add more DBs
-If you'd like to create multiple databases for some reason, you create new db python file under server/models, server/models/db_ext.py, for example. And implement as below.
+Once you defined models, you do the follows. Note that flask db init is only needed when you don't have migrations dir in server dir.
 ```
-from flask_sqlalchemy import SQLAlchemy
-
-
-db_ext = SQLAlchemy()
-```
-And implement DB tables like "Add more DB tables", but use db instead of db_ext.<br>
-
-At last, add db_ext to server/models/\_\_init\_\_.py to import in it.
-```
-from .db import db
-from .db_ext import db_ext # Add db_ext here.
-...
-dbs = [db, db_ext] # Add db_ext here too.
+$ cd <path to server dir>
+$ export FLASK_APP=flask_app:create_app
+$ flask db init
+$ flask db migrate -m "Initial migration."
+$ flask db upgrade
 ```
 
 ### Frontend (Vue.js)
