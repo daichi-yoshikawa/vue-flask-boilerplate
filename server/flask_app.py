@@ -2,6 +2,7 @@ import os
 from flask import Flask
 
 import models
+from models.db import db, migrate
 from config import config
 
 
@@ -33,19 +34,17 @@ def create_app():
   flask_app.config.from_object(config[env])
   config[env].init_app(flask_app)
 
-  [db.init_app(flask_app) for db in models.dbs]
-  with flask_app.app_context():
-    for db in models.dbs:
-      db.create_all()
+  db.init_app(flask_app)
+  migrate.init_app(flask_app, db)
 
   from main import main_blueprint
   flask_app.register_blueprint(main_blueprint, url_prefix='/')
   """If you create SaaS activate the follows."""
-  #from auth import auth_blueprint
-  #flask_app.register_blueprint(auth_blueprint, url_prefix='/auth')
-  #from app import app_blueprint
-  #flask_app.register_blueprint(app_blueprint, url_prefix='/app')
-  #from api import api_blueprint
-  #flask_app.register_blueprint(api_blueprint, url_prefix='/api')
+  from auth import auth_blueprint
+  flask_app.register_blueprint(auth_blueprint, url_prefix='/auth')
+  from app import app_blueprint
+  flask_app.register_blueprint(app_blueprint, url_prefix='/app')
+  from api import api_blueprint
+  flask_app.register_blueprint(api_blueprint, url_prefix='/api')
 
   return flask_app
