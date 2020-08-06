@@ -1,7 +1,14 @@
 <template>
   <div>
     <PageHeader/>
-    <SignupForm/>
+    <div class="card mx-auto my-5">
+      <div class="card-header text-center">
+        <h4>Sign Up Today</h4>
+      </div>
+      <div class="card-body">
+        <SignupForm/>
+      </div>
+    </div>
     <PageFooter/>
   </div>
 </template>
@@ -20,3 +27,9 @@
     },
   };
 </script>
+
+<style scoped>
+  .card {
+    max-width: 640px;
+  }
+</style>
