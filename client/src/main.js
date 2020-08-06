@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
+import { sync } from 'vuex-router-sync'
 
 import App from '@/components/App.vue'
 import router from '@/assets/js/router.js'
+import store from '@/assets/js/store.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -12,16 +14,18 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 
+Vue.use(BootstrapVue);
+Vue.config.productionTip = false;
+sync(store, router);
+
 library.add(fas);
 library.add(fab);
 library.add(far);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-Vue.use(BootstrapVue);
-Vue.config.productionTip = false;
-
 new Vue({
   el: '#app',
   router: router,
+  store: store,
   render: h => h(App),
 });

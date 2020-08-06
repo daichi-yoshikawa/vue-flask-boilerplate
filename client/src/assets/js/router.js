@@ -71,11 +71,7 @@ const routes = [
   },
   {
     path: '*',
-    name: 'not-found',
-    component: NotFound,
-    meta: {
-      title: appName + ' | Page Not Found',
-    },
+    redirect: '/404',
   },
 ];
 
