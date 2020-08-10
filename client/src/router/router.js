@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+11;rgb:3030/0a0a/2424import VueRouter from 'vue-router'
 import Index from '@/components/Index'
 import NotFound from '@/components/NotFound'
 
@@ -87,6 +87,11 @@ const routes = [
 
 const router = new VueRouter({
   routes: routes,
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  next();
 });
 
 export default router;
