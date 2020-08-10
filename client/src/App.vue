@@ -11,7 +11,7 @@
 </script>
 
 <style>
-  @import "../assets/css/style.css";
+  @import "./css/style.css";
 
   #app {
     font-family: 'Open Sans', sans-serif;

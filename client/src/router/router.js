@@ -22,6 +22,7 @@ const routes = [
     component: Index,
     meta: {
       title: appName,
+      requireAuth: false,
     },
   },
   {
@@ -30,6 +31,7 @@ const routes = [
     component: PrivacyPolicy,
     meta: {
       title: appName + ' | Privacy Policy',
+      requireAuth: false,
     },
   },
   {
@@ -38,6 +40,7 @@ const routes = [
     component: TermsOfService,
     meta: {
       title: appName + ' | Terms of Service',
+      requireAuth: false,
     },
   },
   {
@@ -46,6 +49,7 @@ const routes = [
     component: Signup,
     meta: {
       title: appName + ' | Signup',
+      requireAuth: false,
     },
   },
   {
@@ -54,12 +58,17 @@ const routes = [
     component: Login,
     meta: {
       title: appName + ' | Login',
+      requireAuth: false,
     },
   },
   {
     path: '/app',
     name: 'app-index',
     component: AppIndex,
+    meta: {
+      title: appName + ' | App',
+      requireAuth: true,
+    },
   },
   {
     path: '/404',
@@ -67,6 +76,7 @@ const routes = [
     component: NotFound,
     meta: {
       title: appName + ' | Page Not Found',
+      requireAuth: false,
     },
   },
   {

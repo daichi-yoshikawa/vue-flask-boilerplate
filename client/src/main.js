@@ -2,9 +2,9 @@ import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
 import { sync } from 'vuex-router-sync'
 
-import App from '@/components/App.vue'
-import router from '@/assets/js/router.js'
-import store from '@/assets/js/store.js'
+import App from '@/App.vue'
+import router from '@/router/router.js'
+import store from '@/store/store.js'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'

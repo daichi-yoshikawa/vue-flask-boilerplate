@@ -4,7 +4,7 @@
       <div class="container">
         <b-navbar-brand>
           <router-link to="/" class="navbar-brand mb-0 h1 font-weight-bold">
-            <img class="mr-2" src="../assets/img/logo.png">VueWebApp
+            <img class="mr-2" :src="require('@/img/logo.png')">VueWebApp
           </router-link>
         </b-navbar-brand>
 
