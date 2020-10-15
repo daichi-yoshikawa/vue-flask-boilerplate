@@ -3,6 +3,7 @@ from flask import Flask
 
 import models
 from models.db import db, migrate
+from api.authentication import jwt
 from config import config
 
 
@@ -36,6 +37,7 @@ def create_app():
 
   db.init_app(flask_app)
   migrate.init_app(flask_app, db)
+  jwt.init_app(flask_app)
 
   from main import main_blueprint
   flask_app.register_blueprint(main_blueprint, url_prefix='/')

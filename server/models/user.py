@@ -1,4 +1,6 @@
 from datetime import datetime
+from sqlalchemy import func
+from sqlalchemy.sql import expression
 
 from .db import db
 
@@ -10,8 +12,13 @@ class User(db.Model):
   name = db.Column(db.String(128), unique=True, nullable=False)
   email = db.Column(db.String(128), unique=True, nullable=False)
   password = db.Column(db.String(128), unique=False, nullable=False)
-  created_at = db.Column(db.DateTime(), default=datetime.utcnow)
-  updated_at = db.Column(db.DateTime(), default=datetime.utcnow)
+  agreed_eula = db.Column(db.Boolean, nullable=False, server_default=expression.false())
+  created_on = db.Column(db.DateTime(), server_default=func.now())
+  updated_on = db.Column(db.DateTime(), server_default=func.now(), server_onupdate=func.now())
 
   def __repr__(self):
-    return f"User {self.id} : {self.name} created at {self.created_at}"
+    return f'User(id={self.id}, ' +\
+           f'name={self.name}, ' +\
+           f'email={self.email}, ' +\
+           f'eula={self.agreed_eula})'
+
