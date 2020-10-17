@@ -1,5 +1,5 @@
 import Vue from 'vue'
-11;rgb:3030/0a0a/2424import VueRouter from 'vue-router'
+import VueRouter from 'vue-router'
 import Index from '@/components/Index'
 import NotFound from '@/components/NotFound'
 
