@@ -8,13 +8,19 @@ from config import config
 
 
 def get_flask_path(env):
-  root_path = os.path.abspath(os.getenv('FLASK_ROOT_PATH') or '../client')
+  flask_root_path = os.getenv('FLASK_ROOT_PATH')
+  if env == 'testing': # pytest is called in server dir.
+    flask_root_path = '../client'
+
+  root_path = os.path.abspath(flask_root_path)
   default_folder = 'dist/pro' if env == 'production' else 'dist/dev'
 
   template_folder = os.path.join(
     root_path, os.getenv('FLASK_TEMPLATE_DIR') or default_folder)
   static_folder = os.path.join(
     root_path, os.getenv('FLASK_STATIC_DIR') or default_folder)
+  print('rootpath:', os.getenv('FLASK_ROOT_PATH'))
+  print('rootpath:', root_path)
 
   return {
     'root_path': root_path,
@@ -23,8 +29,11 @@ def get_flask_path(env):
   }
 
 
-def create_app():
-  env = os.getenv('FLASK_ENV') or 'development'
+def create_app(testing=False):
+  env = 'testing' if testing else os.getenv('FLASK_ENV') or None
+  print('testing:', testing)
+  if env is None:
+    raise RuntimeError('FLASK_ENV is not set.')
 
   flask_path = get_flask_path(env)
   flask_app = Flask(

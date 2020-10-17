@@ -1,0 +1,8 @@
+__title__ = 'flask-app'
+__description__ = ''
+__url__ = ''
+__version__ = '1.0.0'
+__author__ = ''
+__author_email__ = ''
+__license__ = ''
+__copyright__ = ''

@@ -10,6 +10,9 @@ from models.user import User
 
 
 class UserListAPI(Resource):
+  def get(self):
+    return make_response(jsonify({'test': 'value'}), 200)
+
   def post(self):
     status = HTTPStatus.CREATED
     ret = {}
@@ -29,10 +32,7 @@ class UserListAPI(Resource):
       db.session.add(user)
       db.session.commit()
 
-      print('piyopiyo')
       user = User.query.filter_by(email=data['email']).first()
-      print('hogehoge')
-      print(user)
       data.pop('password')
       ret = data
     except Exception as e:
